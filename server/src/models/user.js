@@ -1,8 +1,9 @@
-const { db, DataTypes } = require("./../db.js");
+const { db, DataTypes } = require("./../db");
 
 const user = db.define("user", {
 	id: {
 		type: DataTypes.INTEGER,
+		autoIncrement: true,
 		primaryKey: true,
 	},
 	nome: {
