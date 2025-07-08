@@ -1,12 +1,11 @@
-# React + Vite
+## Client / Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Para o exemplo atual, eu usei o script de criação de projetos vite, removi algumas dependências que eu não queria usar a adicionei outras, o comando que usei para criar o projeto foi:
 
-Currently, two official plugins are available:
+```shell
+npm create vite client --template react
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Removi tudo relacionado ao eslint, tanto o arquivo `eslint.config.js` quanto as dependências dentro do `package.json`, e adicionei o [tailwind](https://tailwindcss.com/) e um tema para o tailwind com as cores do catppuccin, informações da instalação do tailwind pode ser encontrada [aqui](https://tailwindcss.com/docs/installation/using-vite), e o do tema de cores do catppuccin é irrelevante.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+É importante lembrar de modificar o `vite.config.js`, eu adicionei um parâmetro a ele para que seja possível usar o vite como um servidor web, dentro da função `defineConfig`, eu adicionei uma chave `preview: {host: true}` para facilitar nossa vida.
