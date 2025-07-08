@@ -1,3 +1,6 @@
+include:
+  - path: ./server/compose.yaml
+  - path: ./client/compose.yaml
 services:
   postgres:
     image: postgres
@@ -27,29 +30,6 @@ services:
       - "${MONGO_PORT:-27017}:27017"
     volumes:
       - mongo_data:/etc/mongo
-  server:
-    container_name: my-server
-    restart: unless-stopped
-    depends_on:
-      - postgres
-      - mongo
-    build:
-      context: ./server/
-    ports:
-      - "${SERVER_PORT:-1234}:1234"
-    networks:
-      - my-network
-  client:
-    container_name: my-client
-    restart: unless-stopped
-    depends_on:
-      - server
-    build:
-      context: ./client/
-    ports:
-      - "${CLIENT_PORT:-4173}:4173"
-    networks:
-      - my-network
 networks:
   my-network:
     driver: bridge

@@ -1,0 +1,12 @@
+services:
+  client:
+    container_name: my-client
+    restart: unless-stopped
+    depends_on:
+      - server
+    build:
+      context: .
+    ports:
+      - "${CLIENT_PORT:-4173}:4173"
+    networks:
+      - my-network

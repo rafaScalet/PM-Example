@@ -1,0 +1,13 @@
+services:
+  server:
+    container_name: my-server
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - mongo
+    build:
+      context: .
+    ports:
+      - "${SERVER_PORT:-1234}:${SERVER_PORT:-1234}"
+    networks:
+      - my-network
