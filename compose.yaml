@@ -7,6 +7,14 @@ services:
       - "1234:1234"
     networks:
       - my-network
+  client:
+    container_name: my-client
+    build:
+      context: ./client/
+    ports:
+      - "4173:4173"
+    networks:
+      - my-network
 networks:
   my-network:
     driver: bridge
