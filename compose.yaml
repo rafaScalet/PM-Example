@@ -17,6 +17,8 @@ services:
     image: mongo
     container_name: mongo
     restart: unless-stopped
+    networks:
+      - my-network
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-docker}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS:-mongo}
@@ -34,7 +36,7 @@ services:
     build:
       context: ./server/
     ports:
-      - "1234:1234"
+      - "${SERVER_PORT:-1234}:1234"
     networks:
       - my-network
   client:
@@ -45,7 +47,7 @@ services:
     build:
       context: ./client/
     ports:
-      - "4173:4173"
+      - "${CLIENT_PORT:-4173}:4173"
     networks:
       - my-network
 networks:
